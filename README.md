@@ -50,5 +50,33 @@
   ).catch(err => console.log(err))
   ```
 
+## models
+#### User.js
+```js
+const mongoose = require('mongoose');
+
+// 스키마 생성
+const userSchema = mongoose.Schema({
+  email: {
+    type: String,
+    maxlength: 50,
+    trim: true,   // trim: Space를 없애줌
+    unique: 1     // 중복 허용X
+  },
+  role: {
+    type: Number,
+    default: 0
+  },
+  image: String
+})
+
+// 스키마 모델로 감싸기
+const User = mongoose.model('User', userSchema)
+
+// 해당 모델을 다른곳에 쓸 수 있게 export 해줌
+module.exports = {}
+```
+
 ## node_modules
   - npm 등으로 다운받은 모듈들을 관리하는 폴더
+
